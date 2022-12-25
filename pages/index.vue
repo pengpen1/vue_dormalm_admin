@@ -5,7 +5,11 @@
       class="response-wrap article"
     >
       <li v-for="item in article.data" :key="item.id" class="article-list">
-        <a :href="'/article?id=' + item.id" class="article-item" @click="(e) => jumpURL(e, item.id)">
+        <a
+          :href="'/article?id=' + item.id"
+          class="article-item"
+          @click="(e) => jumpURL(e, item.id)"
+        >
           <div class="article-image">
             <img :src="item.img_url" :alt="item.title" />
           </div>
@@ -65,12 +69,12 @@ export default {
         categoryId,
         article: res.data.data,
       }
-    }else {
-      return  {
-        isClear:  false,
+    } else {
+      return {
+        isClear: false,
         page: 1,
         isLoad: false,
-        categoryId : "",
+        categoryId: '',
         article: null,
       }
     }
@@ -80,16 +84,15 @@ export default {
   },
   head() {
     return {
-      title: '波波博客 - boblog.com - 技术博客',
+      title: '宿舍万事通_dormalm',
       meta: [
         {
           name: 'keywords',
-          content:
-            '波波,博客,波波博客,梁凤波,bo,blog,boblog,前端开发工程师,前端性能优化,JavaScript,css,html',
+          content: '宿舍万事通、宿舍楼管理系统、universal',
         },
         {
           name: 'description',
-          content: '波波博客 - BoBlog.com，专注于前端开发技术，前端性能优化！',
+          content: '让互联网给宿舍生活赋能-宿舍万事通',
         },
       ],
     }
@@ -108,11 +111,10 @@ export default {
     },
   },
   beforeDestroy() {
-    if(this.progress) {
+    if (this.progress) {
       this.progress.removeProgress()
       this.progress = null
     }
-
   },
   mounted() {
     this.$nextTick(() => {

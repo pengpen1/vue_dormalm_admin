@@ -1,17 +1,18 @@
 <template>
   <div class="response-wrap footer">
     <div class="site">
-      <span>© 波波博客 - BoBlog.com</span>
-      <span>itbo@163.com</span>
+      <span>© 宿舍万事通 - dormalm.com</span>
+      <span>coderpengfq@gmail.com</span>
     </div>
     <div class="copyright">
-      <a
+      <!-- <a
         class="copyright-link"
         href="https://beian.miit.gov.cn"
         target="_blank"
       >
         粤ICP备2020120493号
-      </a>
+      </a> -->
+      <a href="#" class="copyright-link">成都东软学院 - 电子商务系</a>
     </div>
   </div>
 </template>

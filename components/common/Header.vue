@@ -17,10 +17,13 @@
           >
             {{ item.title }}
           </div>
+          <a href="#" target="_blank" class="nav-item">
+            消息中心
+          </a>
           <div v-if="Array.isArray(categoryList) && categoryList.length">
-            <el-dropdown>
+            <el-dropdown class="el-dropdown">
               <span class="el-dropdown-link" >
-                分类<i class="el-icon-arrow-down el-icon--right"></i>
+                业务分类<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item v-for="item in categoryList" :key="item.id">
@@ -29,9 +32,6 @@
               </el-dropdown-menu>
             </el-dropdown>
           </div>
-          <a href="https://github.com/lfb/nodejs-koa-blog" target="_blank" class="nav-item">
-            Github
-          </a>
         </div>
         <div class="search">
           <el-input
@@ -68,7 +68,11 @@ export default {
         {
           title: '首页',
           router: '/',
-        }
+        },
+        {
+          title: '宿舍小卖部',
+          router: '/',
+        },
       ],
     }
   },
@@ -147,7 +151,7 @@ export default {
   display: block;
   width: 100px;
   height: 56px;
-  background: url('https://cdn.boblog.com/logo.png') center center no-repeat;
+  background: url('../../assets/img/logo2.png') center center no-repeat;
   background-size: 100px;
 }
 .nav {
@@ -176,20 +180,21 @@ export default {
 
   &:hover {
     color: #2d8cf0;
-    text-decoration: underline;
   }
 }
 
+.el-dropdown{
+  margin: 0 32px;
+}
 .el-dropdown-link {
   cursor: pointer;
   font-size: 16px;
-  padding: 0 32px;
+  // padding: 0 32px;
   color: #222222;
   white-space: nowrap;
 
   &:hover {
     color: #2d8cf0;
-    text-decoration: underline;
   }
 
   &:hover .el-icon-arrow-down {

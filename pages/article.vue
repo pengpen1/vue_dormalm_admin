@@ -10,7 +10,7 @@
             <span v-if="nickname" class="author"> By {{ nickname }} </span>
             <span class="created-at">{{ article.created_at }}</span>
             <span v-if="article.category_info" class="category">
-            文章分类：{{ article.category_info.name }}
+            业务分类：{{ article.category_info.name }}
           </span>
           </div>
           <div class="article-content" v-html="article.content"></div>
