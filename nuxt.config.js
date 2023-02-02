@@ -31,8 +31,10 @@ export default {
     '@/plugins/axios-ports',
     '@/plugins/md',
     '@/plugins/route',
+    // 该文件只包含在客户端
     { src: '@/plugins/scrollTo', mode: 'client' },
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    { src:"~plugins/vue-particles",ssr:false},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -54,5 +56,10 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],
-  }
+  },
+  // 指定页面使用spa
+  serverMiddleware: [
+    { path: '/shop', handler: (req, res, next) => { res.spa = true; next() } },
+    { path: '/messagecenter', handler: (req, res, next) => { res.spa = true; next() } }
+  ]
 }

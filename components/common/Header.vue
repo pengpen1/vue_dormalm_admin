@@ -17,7 +17,7 @@
           >
             {{ item.title }}
           </div>
-          <a href="#" target="_blank" class="nav-item">
+          <a href="/messagecenter" target="_self" class="nav-item">
             消息中心
           </a>
           <div v-if="Array.isArray(categoryList) && categoryList.length">
@@ -71,7 +71,7 @@ export default {
         },
         {
           title: '宿舍小卖部',
-          router: '/',
+          router: '/shop',
         },
       ],
     }
