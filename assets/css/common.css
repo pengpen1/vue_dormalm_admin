@@ -187,3 +187,26 @@ html, body {
 .page-enter, .page-leave-active {
   opacity: 0;
 }
+
+/*  加载更多 */
+.load-more {
+  margin: 20px auto;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  width: 600px;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #d61a1a;
+}
+.price {
+  color: #e1251b;
+  font-size: 25px;
+  font-weight: bold;
+  padding-left:20px;
+}
+.price span {
+  font-size: 12px;
+  margin-right: 5px;
+}

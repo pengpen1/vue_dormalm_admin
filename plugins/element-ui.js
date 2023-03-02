@@ -13,6 +13,17 @@ import {
   Loading,
   MessageBox,
   Message,
+  Carousel,
+  CarouselItem,
+  Autocomplete,
+  RadioGroup,
+  RadioButton,
+  InputNumber,
+  Divider,
+  Checkbox,
+  Tag,
+  Tabs,
+  TabPane,
 } from 'element-ui'
 
 import locale from 'element-ui/lib/locale/lang/en'
@@ -27,7 +38,18 @@ const components = [
   DropdownItem,
   Pagination,
   Input,
-  Drawer
+  Drawer,
+  Carousel,
+  CarouselItem,
+  Autocomplete,
+  RadioGroup,
+  RadioButton,
+  InputNumber,
+  Divider,
+  Checkbox,
+  Tag,
+  Tabs,
+  TabPane,
 ]
 const Element = {
   install(Vue) {

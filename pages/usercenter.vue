@@ -18,7 +18,14 @@
             <p>文章：{{ item.article.title }}</p>
             <p>评论内容：{{ item.content }}</p>
             <p>评论时间：{{ item.created_at }}</p>
-            <p>回复：{{ item.reply_list || '无' }}</p>
+            <p v-if="!item.reply_list">回复：无}</p>
+            <template v-else>
+              <p v-for="(replay, index) in item.reply_list" :key="replay.id">
+                回复{{ index + 1 }}({{ replay.user_info.username }})：{{
+                  replay.content
+                }}
+              </p>
+            </template>
           </li>
         </ul>
         <div class="pagination">
@@ -57,24 +64,6 @@ export default {
   async fetch({ store }) {
     await store.dispatch('category/getCategoryData')
   },
-  head() {
-    return {
-      title: `${
-        this.userInfo && this.userInfo.username
-      } - 个人中心  - boblog.com`,
-      meta: [
-        {
-          name: 'keywords',
-          content:
-            '波波,博客,波波博客,梁凤波,bo,blog,boblog,前端开发工程师,前端性能优化,JavaScript,css,html',
-        },
-        {
-          name: 'description',
-          content: '波波博客 - BoBlog.com，专注于前端开发技术，前端性能优化！',
-        },
-      ],
-    }
-  },
   mounted() {
     this.getComment()
   },
@@ -95,6 +84,7 @@ export default {
         page: this.page,
       })
       if (!err) {
+        console.log('1111', res)
         this.isLoad = true
         this.commentList = res.data.data.data
         this.count = res.data.data.meta.count

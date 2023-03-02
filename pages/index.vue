@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div class="banner">
+      <el-carousel :interval="4000" direction="vertical" height="360px" class="carousel">
+      <el-carousel-item v-for="item in lists" :key="item._id">
+          <a href="#" target="_bank">
+            <img :src="item.img_url" alt="" class="carousel-img"/>
+          </a>
+      </el-carousel-item>
+    </el-carousel>
+    </div>
     <ul
       v-if="article && article.data && article.data.length > 0"
       class="response-wrap article"
@@ -77,6 +86,27 @@ export default {
         categoryId: '',
         article: null,
       }
+    }
+  },
+  data: () => {
+    return {
+      lists: [
+        {
+          img_url: require('~/assets/img/rotograph_1.png'),
+        },
+        {
+          img_url: require('~/assets/img/rotograph_2.png'),
+        },
+        {
+          img_url: require('~/assets/img/scenery_4.jpg'),
+        },
+        {
+          img_url: require('~/assets/img/scenery_1.jpg'),
+        },
+        {
+          img_url: require('~/assets/img/scenery_7.jpg'),
+        },
+      ],
     }
   },
   async fetch({ store }) {
@@ -161,6 +191,23 @@ export default {
   border-bottom: 1px solid #f0f0f0;
 }
 
+.banner{
+  width: 900px;
+  margin: 20px auto;
+  // .carousel{
+  //   margin: 0 auto;
+  // }
+  .carousel-img{
+    width: 900px;
+    height: 360px;
+    object-fit: cover;
+  }
+}
+@media (max-width: 900px) {
+  .banner{
+    display: none;
+  }
+ }
 .article-list:hover .article-title {
   color: #0164da;
   text-decoration: underline;
