@@ -122,7 +122,7 @@ export default {
   width: 80%;
   height: 74px;
   margin: 5px auto;
-  background: url('../../../assets/logo/boblog.png') 0 center no-repeat;
+  background: url('../../../assets/logo/logo2.png') 0 center no-repeat;
   background-size: 82%;
 
   img {

@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <div class="dashboard-text">
       <h3> ^_^ 您好，{{ name }}</h3>
-      <div>欢迎来到 Bo Blog！</div>
+      <div>欢迎来到 宿舍万事通后台管理系统！</div>
     </div>
   </div>
 </template>

@@ -7,12 +7,10 @@
         class="sidebar-logo-link"
         to="/"
       >
-        <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 v-else class="sidebar-title">{{ title }}</h1>
+        <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo">
-        <h1 class="sidebar-title">{{ title }}</h1>
+        <h1 class="sidebar-title">{{ title2 }}</h1>
       </router-link>
     </transition>
   </div>
@@ -29,8 +27,9 @@ export default {
   },
   data() {
     return {
-      title: '',
-      logo: 'https://cdn.boblog.com/FieFyVleQaVrqewVfPFkYgjlODZK'
+      title: 'dormalm',
+      logo: require('@/assets/logo/logo2.png'),
+      title2: 'DORMALM'
     }
   }
 }
@@ -61,6 +60,7 @@ export default {
 
     & .sidebar-logo {
       height: 64px;
+      object-fit: cover;
       vertical-align: middle;
       margin-right: 12px;
     }
@@ -71,8 +71,8 @@ export default {
       color: #fff;
       font-weight: 600;
       line-height: 50px;
-      font-size: 14px;
-      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+      font-size: 28px;
+      // font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
       vertical-align: middle;
     }
   }

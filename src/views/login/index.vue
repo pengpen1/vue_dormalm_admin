@@ -9,7 +9,7 @@
       label-position="left"
     >
       <div class="title-container">
-        <img width="180" src="https://cdn.boblog.com/FieFyVleQaVrqewVfPFkYgjlODZK" alt="logo">
+        <img width="180" :src="require('@/assets/logo/logo2.png')" alt="logo">
       </div>
 
       <el-form-item prop="email">

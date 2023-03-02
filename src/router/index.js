@@ -108,6 +108,32 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/goods',
+    component: Layout,
+    redirect: '/goods/index',
+    name: 'Goods',
+    meta: { title: '商品管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'index',
+        name: 'GoodsIndex',
+        component: () => import('@/views/article/index'),
+        meta: { title: '商品列表', icon: 'table' }
+      },
+      {
+        path: 'create',
+        name: 'GoodsCreate',
+        component: () => import('@/views/article/create'),
+        meta: { title: '创建商品', icon: 'tree' }
+      },
+      {
+        path: 'edit',
+        name: 'GoodsEdit',
+        component: () => import('@/views/article/edit')
+      }
+    ]
+  },
+  {
     path: '/user',
     component: Layout,
     redirect: '/user/index',

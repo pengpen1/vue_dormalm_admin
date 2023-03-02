@@ -12,7 +12,8 @@
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <!--          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar">-->
-          <img :src="avatar" class="user-avatar">
+          <!-- <img :src="avatar" class="user-avatar"> -->
+          <span class="setting">设置</span>
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
@@ -115,8 +116,16 @@ export default {
 
         .user-avatar {
           cursor: pointer;
-          height: 50px;
+          height: 26px;
+          width: 60px;
+          object-fit: cover;
           border-radius: 10px;
+        }
+        .setting{
+          font-size: 16px;
+          color: black;
+          font-weight: 500;
+          cursor: pointer;
         }
 
         .el-icon-caret-bottom {

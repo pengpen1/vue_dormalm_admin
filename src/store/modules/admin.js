@@ -60,7 +60,7 @@ const actions = {
         const { nickname } = data
 
         commit('SET_NAME', nickname)
-        commit('SET_AVATAR', 'https://cdn.boblog.com/boblog.png')
+        commit('SET_AVATAR', require('@/assets/logo/logo2.png'))
         commit('SET_ADMIN_INFO', data)
         resolve(data)
       }).catch(error => {
