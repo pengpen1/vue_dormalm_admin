@@ -1,13 +1,18 @@
 <template>
   <div>
     <div class="banner">
-      <el-carousel :interval="4000" direction="vertical" height="360px" class="carousel">
-      <el-carousel-item v-for="item in lists" :key="item._id">
+      <el-carousel
+        :interval="4000"
+        direction="vertical"
+        height="360px"
+        class="carousel"
+      >
+        <el-carousel-item v-for="item in lists" :key="item._id">
           <a href="#" target="_bank">
-            <img :src="item.img_url" alt="" class="carousel-img"/>
+            <img :src="item.img_url" alt="" class="carousel-img" />
           </a>
-      </el-carousel-item>
-    </el-carousel>
+        </el-carousel-item>
+      </el-carousel>
     </div>
     <ul
       v-if="article && article.data && article.data.length > 0"
@@ -34,6 +39,8 @@
             <div class="article-category">
               {{ item.category_info ? item.category_info.name : '' }}
             </div>
+            <!-- 新增浏览数(根据接口获取次数来决定的)和点赞数 -->
+            <div class="article-browse">预览数：{{ item.browse }} 点赞数：{{ item.favorite_num }}</div>
           </div>
         </a>
       </li>
@@ -191,23 +198,23 @@ export default {
   border-bottom: 1px solid #f0f0f0;
 }
 
-.banner{
+.banner {
   width: 900px;
   margin: 20px auto;
   // .carousel{
   //   margin: 0 auto;
   // }
-  .carousel-img{
+  .carousel-img {
     width: 900px;
     height: 360px;
     object-fit: cover;
   }
 }
 @media (max-width: 900px) {
-  .banner{
+  .banner {
     display: none;
   }
- }
+}
 .article-list:hover .article-title {
   color: #0164da;
   text-decoration: underline;
@@ -255,6 +262,11 @@ export default {
   color: #808080;
 }
 
+.article-browse{
+  font-size: 14px;
+  color: #808080;
+  margin-top: 8px;
+}
 .empty-data {
   padding: 80px 0;
   text-align: center;

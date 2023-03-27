@@ -18,7 +18,7 @@
             <p>文章：{{ item.article.title }}</p>
             <p>评论内容：{{ item.content }}</p>
             <p>评论时间：{{ item.created_at }}</p>
-            <p v-if="!item.reply_list">回复：无}</p>
+            <p v-if="!item.reply_list">回复：无</p>
             <template v-else>
               <p v-for="(replay, index) in item.reply_list" :key="replay.id">
                 回复{{ index + 1 }}({{ replay.user_info.username }})：{{
@@ -79,6 +79,7 @@ export default {
       const uid = this.userInfo && this.userInfo.id
       const [err, res] = await getCommentTarget({
         user_id: uid,
+        // 1就是查询
         is_replay: 1,
         is_article: 1,
         page: this.page,

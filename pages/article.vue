@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-if='article'>
+    <div v-if="article">
       <div class="response-wrap">
-        <div  class="article">
+        <div class="article">
           <h1 class="title">
             {{ article.title }}
           </h1>
@@ -10,16 +10,26 @@
             <span v-if="nickname" class="author"> By {{ nickname }} </span>
             <span class="created-at">{{ article.created_at }}</span>
             <span v-if="article.category_info" class="category">
-            业务分类：{{ article.category_info.name }}
-          </span>
+              业务分类：{{ article.category_info.name }}
+            </span>
           </div>
           <div class="article-content" v-html="article.content"></div>
         </div>
+
         <div class="fixed-sidebar">
           <div class="fixed-scroll-top">
             <i class="el-icon-top" @click="scrollTop"></i>
           </div>
         </div>
+      </div>
+
+      <div class="star-wrap">
+        <span class="star-num">{{ starNum }}</span>
+        <span
+          class="el-icon-star-on star"
+          :class="isActive ? 'star-on' : 'star-off'"
+          @click="clickStarHandle"
+        ></span>
       </div>
 
       <vue-lazy-component @after-leave="onLoadEnd">
@@ -28,14 +38,12 @@
           width="0"
           height="0"
           style="display: none"
-          src="https://cdn.boblog.com/login-bg.png"
+          :src="require('~/assets/img/rotograph_1.png')"
           alt="preload"
         />
       </vue-lazy-component>
     </div>
-    <div v-else class='empty-data'>
-      暂无数据
-    </div>
+    <div v-else class="empty-data">暂无数据</div>
   </div>
 </template>
 <script>
@@ -62,26 +70,17 @@ export default {
         article: res.data.data,
       }
     }
-
   },
   data() {
     return {
       article: null,
       isLogin: false,
+      isActive: false,
+      starNum: 88,
     }
   },
   async fetch({ store }) {
     await store.dispatch('category/getCategoryData')
-  },
-  head() {
-    const article = this.article || {}
-    return {
-      title: article.title,
-      meta: [
-        { name: 'keywords', content: article.seo_keyword },
-        { name: 'description', content: article.description },
-      ],
-    }
   },
   computed: {
     ...mapState({
@@ -89,18 +88,17 @@ export default {
       isLoginStatus: (state) => state.user.isLoginStatus,
     }),
     nickname() {
-      if(this.article && this.article.admin_info) {
+      if (this.article && this.article.admin_info) {
         return this.article.admin_info.nickname
       }
       return ''
-    }
+    },
   },
   beforeDestroy() {
-    if(this.progress) {
+    if (this.progress) {
       this.progress.removeProgress()
       this.progress = null
     }
-
   },
   mounted() {
     this.initData()
@@ -122,7 +120,11 @@ export default {
       this.$nextTick(() => {
         this.progress.calculateWidthPrecent()
       })
-    }
+    },
+    // 点赞
+    clickStarHandle() {
+      this.isActive = !this.isActive
+    },
   },
 }
 </script>
@@ -204,6 +206,22 @@ li {
   text-align: center;
   font-size: 14px;
 }
-
+.star-wrap {
+  width: 60%;
+  margin: 18px auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .star {
+    margin: 4px;
+    cursor: pointer;
+    font-size: 32px;
+  }
+  .star-on {
+    color: rgb(241, 15, 15);
+  }
+  .star-off {
+    color: black;
+  }
+}
 </style>
-

@@ -24,6 +24,7 @@ import {
   Tag,
   Tabs,
   TabPane,
+  Popover,
 } from 'element-ui'
 
 import locale from 'element-ui/lib/locale/lang/en'
@@ -50,6 +51,7 @@ const components = [
   Tag,
   Tabs,
   TabPane,
+  Popover,
 ]
 const Element = {
   install(Vue) {
