@@ -1,16 +1,29 @@
 <template>
-  <div class="login-container">
+  <div class="logon-container">
     <el-form
-      ref="loginForm"
-      :model="loginForm"
-      :rules="loginRules"
-      class="login-form"
-      auto-complete="on"
+      ref="logonForm"
+      :model="logonForm"
+      :rules="logonRules"
+      class="logon-form"
       label-position="left"
     >
       <div class="title-container">
         <img width="180" :src="require('@/assets/logo/logo2.png')" alt="logo">
       </div>
+
+      <el-form-item prop="nickname">
+        <span class="svg-container">
+          <svg-icon icon-class="user" />
+        </span>
+        <el-input
+          ref="nickname"
+          v-model="logonForm.nickname"
+          placeholder="nickname"
+          name="nickname"
+          type="text"
+          tabindex="1"
+        />
+      </el-form-item>
 
       <el-form-item prop="email">
         <span class="svg-container">
@@ -18,44 +31,50 @@
         </span>
         <el-input
           ref="email"
-          v-model="loginForm.email"
+          v-model="logonForm.email"
           placeholder="Email"
           name="email"
           type="text"
-          tabindex="1"
-          auto-complete="on"
+          tabindex="2"
         />
       </el-form-item>
 
-      <el-form-item prop="password">
+      <el-form-item prop="password1">
         <span class="svg-container">
           <svg-icon icon-class="password" />
         </span>
         <el-input
-          :key="passwordType"
-          ref="password"
-          v-model="loginForm.password"
-          :type="passwordType"
+          ref="password1"
+          v-model="logonForm.password1"
+          type="password"
           placeholder="Password"
           name="password"
-          tabindex="2"
-          auto-complete="on"
-          @keyup.enter.native="handleLogin"
+          tabindex="3"
         />
-        <span class="show-pwd" @click="showPwd">
-          <svg-icon
-            :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"
-          />
+      </el-form-item>
+
+      <el-form-item prop="password2">
+        <span class="svg-container">
+          <svg-icon icon-class="password" />
         </span>
+        <el-input
+          ref="password2"
+          v-model="logonForm.password2"
+          type="password"
+          placeholder="Reenter the Password"
+          name="password"
+          tabindex="4"
+        />
       </el-form-item>
 
       <el-button
         :loading="loading"
         type="primary"
         style="width: 100%; margin-bottom: 30px"
-        @click.native.prevent="handleLogin"
-      >登录</el-button>
-      <router-link to="/logon" class="link-logon">注册管理员账号</router-link>
+        @click.native.prevent="handlelogon"
+      >注册</el-button>
+
+      <router-link to="/login" class="link-logon">前往登录页</router-link>
     </el-form>
   </div>
 </template>
@@ -64,7 +83,7 @@
 import { validEmail } from '@/utils/validate'
 
 export default {
-  name: 'Login',
+  name: 'Logon',
   data() {
     const validateEmail = (rule, value, callback) => {
       if (!validEmail(value)) {
@@ -81,11 +100,13 @@ export default {
       }
     }
     return {
-      loginForm: {
+      logonForm: {
+        nickname: '',
         email: '',
-        password: ''
+        password1: '',
+        password2: ''
       },
-      loginRules: {
+      logonRules: {
         email: [{ required: true, trigger: 'blur', validator: validateEmail }],
         password: [
           { required: true, trigger: 'blur', validator: validatePassword }
@@ -116,12 +137,12 @@ export default {
       })
     },
     // 登录
-    handleLogin() {
-      this.$refs.loginForm.validate((valid) => {
+    handlelogon() {
+      this.$refs.logonForm.validate((valid) => {
         if (valid) {
           this.loading = true
           this.$store
-            .dispatch('admin/login', this.loginForm)
+            .dispatch('admin/logon', this.logonForm)
             .then(() => {
               this.$router.push({ path: this.redirect || '/' })
               this.loading = false
@@ -149,13 +170,13 @@ $light_gray: #fff;
 $cursor: #fff;
 
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
-  .login-container .el-input input {
+  .logon-container .el-input input {
     color: $cursor;
   }
 }
 
 /* reset element-ui css */
-.login-container {
+.logon-container {
   .el-input {
     display: inline-block;
     height: 47px;
@@ -192,13 +213,13 @@ $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
 
-.login-container {
+.logon-container {
   min-height: 100%;
   width: 100%;
   background-color: $bg;
   overflow: hidden;
 
-  .login-form {
+  .logon-form {
     position: relative;
     width: 520px;
     max-width: 100%;

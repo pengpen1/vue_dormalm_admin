@@ -5,8 +5,6 @@
 
 - 技术栈：Vue.js, Vuex, vue-router
 - UI 框架：Element-UI
-- Node.js 服务端 API 接口项目：[https://github.com/lfb/nodejs-koa-blog](https://github.com/lfb/nodejs-koa-blog)
-- 欢迎大家指导~
 
 ## 安装启动
 ```
@@ -16,6 +14,3 @@ npm install 或者 yarn install
 # 启动
 npm dev 或者 yarn dev
 ```
-
-
-![image.png](./boblog_admin.png)
