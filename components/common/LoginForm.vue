@@ -2,7 +2,8 @@
   <div class="form-wrap">
     <div class="form">
       <div class="form-bg">
-        <img src="https://cdn.boblog.com/login-bg.png" alt="login" />
+        <!-- <img src="https://cdn.boblog.com/login-bg.png" alt="login" /> -->
+        <img :src="require('~/assets/img/background_2.jpg')" alt="login" />
       </div>
       <div class="form-list">
         <div class="logo">
@@ -175,6 +176,8 @@ export default {
 
   img {
     width: 100%;
+    height: 600px;
+    object-fit: cover;
   }
 }
 .form-list {

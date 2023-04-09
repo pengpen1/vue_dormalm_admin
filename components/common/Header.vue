@@ -13,13 +13,13 @@
                 'nav-item-active': navIndex === index,
               },
             ]"
-            @click="jumpURL(item.router)"
+            @click="jumpURL(item.router,index)"
           >
             {{ item.title }}
           </div>
-          <a href="/messagecenter" target="_self" class="nav-item">
+          <!-- <a href="/messagecenter" target="_self" class="nav-item" v-if="isLoginStatus">
             消息中心
-          </a>
+          </a> -->
           <div v-if="Array.isArray(categoryList) && categoryList.length">
             <el-dropdown class="el-dropdown">
               <span class="el-dropdown-link" >
@@ -107,13 +107,16 @@ export default {
         this.nav.splice(2, 0, {
           title: '个人中心',
           router: '/usercenter',
+        },{
+          title: '消息中心',
+          router: '/messagecenter',
         })
       } else {
         const index = this.nav.findIndex(
           (item) => item.router === '/usercenter'
         )
         if (index !== -1) {
-          this.nav.splice(index, 1)
+          this.nav.splice(index, 2)
         }
       }
     },
@@ -122,13 +125,14 @@ export default {
       window.location.href = '/'
     },
     // 跳转URL
-    jumpURL(router) {
+    jumpURL(router,index) {
       const { category_id, keyword } = this.$route.query
       if (category_id || keyword) {
         window.location.href = router
       } else {
         this.$router.push(router)
       }
+      this.navIndex = index;
     },
   },
 }

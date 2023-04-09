@@ -1,25 +1,8 @@
-/*highlight.js*/
-/*Syntax highlighting for the Web*/
-/*@font-face {*/
-/*  font-family: "Roboto";*/
-/*  src: url("https://cdn.boblog.com/Roboto-Regular.ttf");*/
-/*}*/
-
-/*@font-face {*/
-/*  font-family: "NotoSansTC";*/
-/*  src: url("https://cdn.boblog.com/NotoSansTC-Regular.otf");*/
-/*}*/
-
 @font-face {
   font-family: "SourceCodePro-Regular";
   src: url("https://cdn.boblog.com/SourceCodePro-Regular.ttf");
   font-weight: normal;
 }
-/*@font-face {*/
-/*  font-family: "SourceCodePro";*/
-/*  src: url("https://cdn.boblog.com/SourceCodePro-Bold.ttf");*/
-/*  font-weight: bold;*/
-/*}*/
 @font-face {
   font-family: "SourceCodePro";
   src: url("https://cdn.boblog.com/SourceCodePro-Medium.ttf");
